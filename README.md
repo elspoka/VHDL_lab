@@ -1,2 +1,2 @@
 # VHDL_lab
-VHDL examples for educational purpose using Xilinx ISE Design Suite and Spartan-3E starter board.
+VHDL examples created for educational purpose using Xilinx ISE Design Suite and Spartan-3E starter board.

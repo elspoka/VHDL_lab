@@ -1,0 +1,91 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+
+package lcd_cntrl_pkg is
+  -- LCD character subset
+  constant LCD_CHR_A_LO     : std_logic_vector(7 downto 0) := X"61";
+  constant LCD_CHR_B_LO     : std_logic_vector(7 downto 0) := X"62";
+  constant LCD_CHR_C_LO     : std_logic_vector(7 downto 0) := X"63";
+  constant LCD_CHR_D_LO     : std_logic_vector(7 downto 0) := X"64";
+  constant LCD_CHR_E_LO     : std_logic_vector(7 downto 0) := X"65";
+  constant LCD_CHR_F_LO     : std_logic_vector(7 downto 0) := X"66";
+  constant LCD_CHR_G_LO     : std_logic_vector(7 downto 0) := X"67";
+  constant LCD_CHR_H_LO     : std_logic_vector(7 downto 0) := X"68";
+  constant LCD_CHR_I_LO     : std_logic_vector(7 downto 0) := X"69";
+  constant LCD_CHR_J_LO     : std_logic_vector(7 downto 0) := X"6A";
+  constant LCD_CHR_K_LO     : std_logic_vector(7 downto 0) := X"6B";
+  constant LCD_CHR_L_LO     : std_logic_vector(7 downto 0) := X"6C";
+  constant LCD_CHR_M_LO     : std_logic_vector(7 downto 0) := X"6D";
+  constant LCD_CHR_N_LO     : std_logic_vector(7 downto 0) := X"6E";
+  constant LCD_CHR_O_LO     : std_logic_vector(7 downto 0) := X"6F";
+  constant LCD_CHR_P_LO     : std_logic_vector(7 downto 0) := X"70";
+  constant LCD_CHR_Q_LO     : std_logic_vector(7 downto 0) := X"71";
+  constant LCD_CHR_R_LO     : std_logic_vector(7 downto 0) := X"72";
+  constant LCD_CHR_S_LO     : std_logic_vector(7 downto 0) := X"73";
+  constant LCD_CHR_T_LO     : std_logic_vector(7 downto 0) := X"74";
+  constant LCD_CHR_U_LO     : std_logic_vector(7 downto 0) := X"75";
+  constant LCD_CHR_V_LO     : std_logic_vector(7 downto 0) := X"76";
+  constant LCD_CHR_W_LO     : std_logic_vector(7 downto 0) := X"77";
+  constant LCD_CHR_X_LO     : std_logic_vector(7 downto 0) := X"78";
+  constant LCD_CHR_Y_LO     : std_logic_vector(7 downto 0) := X"79";
+  constant LCD_CHR_Z_LO     : std_logic_vector(7 downto 0) := X"7A";
+  --
+  constant LCD_CHR_A_UP     : std_logic_vector(7 downto 0) := X"41";
+  constant LCD_CHR_B_UP     : std_logic_vector(7 downto 0) := X"42";
+  constant LCD_CHR_C_UP     : std_logic_vector(7 downto 0) := X"43";
+  constant LCD_CHR_D_UP     : std_logic_vector(7 downto 0) := X"44";
+  constant LCD_CHR_E_UP     : std_logic_vector(7 downto 0) := X"45";
+  constant LCD_CHR_F_UP     : std_logic_vector(7 downto 0) := X"46";
+  constant LCD_CHR_G_UP     : std_logic_vector(7 downto 0) := X"47";
+  constant LCD_CHR_H_UP     : std_logic_vector(7 downto 0) := X"48";
+  constant LCD_CHR_I_UP     : std_logic_vector(7 downto 0) := X"49";
+  constant LCD_CHR_J_UP     : std_logic_vector(7 downto 0) := X"4A";
+  constant LCD_CHR_K_UP     : std_logic_vector(7 downto 0) := X"4B";
+  constant LCD_CHR_L_UP     : std_logic_vector(7 downto 0) := X"4C";
+  constant LCD_CHR_M_UP     : std_logic_vector(7 downto 0) := X"4D";
+  constant LCD_CHR_N_UP     : std_logic_vector(7 downto 0) := X"4E";
+  constant LCD_CHR_O_UP     : std_logic_vector(7 downto 0) := X"4F";
+  constant LCD_CHR_P_UP     : std_logic_vector(7 downto 0) := X"50";
+  constant LCD_CHR_Q_UP     : std_logic_vector(7 downto 0) := X"51";
+  constant LCD_CHR_R_UP     : std_logic_vector(7 downto 0) := X"52";
+  constant LCD_CHR_S_UP     : std_logic_vector(7 downto 0) := X"53";
+  constant LCD_CHR_T_UP     : std_logic_vector(7 downto 0) := X"54";
+  constant LCD_CHR_U_UP     : std_logic_vector(7 downto 0) := X"55";
+  constant LCD_CHR_V_UP     : std_logic_vector(7 downto 0) := X"56";
+  constant LCD_CHR_W_UP     : std_logic_vector(7 downto 0) := X"57";
+  constant LCD_CHR_X_UP     : std_logic_vector(7 downto 0) := X"58";
+  constant LCD_CHR_Y_UP     : std_logic_vector(7 downto 0) := X"59";
+  constant LCD_CHR_Z_UP     : std_logic_vector(7 downto 0) := X"5A";
+  --
+  constant LCD_CHR_0        : std_logic_vector(7 downto 0) := X"30";
+  constant LCD_CHR_1        : std_logic_vector(7 downto 0) := X"31";
+  constant LCD_CHR_2        : std_logic_vector(7 downto 0) := X"32";
+  constant LCD_CHR_3        : std_logic_vector(7 downto 0) := X"33";
+  constant LCD_CHR_4        : std_logic_vector(7 downto 0) := X"34";
+  constant LCD_CHR_5        : std_logic_vector(7 downto 0) := X"35";
+  constant LCD_CHR_6        : std_logic_vector(7 downto 0) := X"36";
+  constant LCD_CHR_7        : std_logic_vector(7 downto 0) := X"37";
+  constant LCD_CHR_8        : std_logic_vector(7 downto 0) := X"38";
+  constant LCD_CHR_9        : std_logic_vector(7 downto 0) := X"39";
+  --
+  constant LCD_CHR_COLON    : std_logic_vector(7 downto 0) := X"3A";
+  constant LCD_CHR_PERIOD   : std_logic_vector(7 downto 0) := X"2E";
+  constant LCD_CHR_SCOLON   : std_logic_vector(7 downto 0) := X"3B";
+  constant LCD_CHR_MINUS    : std_logic_vector(7 downto 0) := X"2D";
+  constant LCD_CHR_DIV      : std_logic_vector(7 downto 0) := X"2F";
+  constant LCD_CHR_PLUS     : std_logic_vector(7 downto 0) := X"2B";
+  constant LCD_CHR_COMMA    : std_logic_vector(7 downto 0) := X"2C";
+  constant LCD_CHR_LT       : std_logic_vector(7 downto 0) := X"3C";
+  constant LCD_CHR_GT       : std_logic_vector(7 downto 0) := X"3E";
+  constant LCD_CHR_EQ       : std_logic_vector(7 downto 0) := X"3D";
+  constant LCD_CHR_SPACE    : std_logic_vector(7 downto 0) := X"20";
+  constant LCD_CHR_CR       : std_logic_vector(7 downto 0) := X"0D";
+  constant LCD_CHR_QMARK    : std_logic_vector(7 downto 0) := X"3F";
+  constant LCD_CHR_DOLLAR   : std_logic_vector(7 downto 0) := X"24";
+  constant LCD_CHR_XCLAIM   : std_logic_vector(7 downto 0) := X"21";
+  constant LCD_CHR_BS       : std_logic_vector(7 downto 0) := X"08";
+  constant LCD_CHR_LBRACKET : std_logic_vector(7 downto 0) := X"5B";
+  constant LCD_CHR_RBRACKET : std_logic_vector(7 downto 0) := X"5D";
+  --
+end package lcd_cntrl_pkg;
